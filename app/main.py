@@ -6,6 +6,8 @@ from contextlib import asynccontextmanager
 from collections.abc import AsyncIterator
 
 from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
+from fastapi.staticfiles import StaticFiles
 
 from app.cache import close_redis_client, create_redis_client
 from app.database import init_db
@@ -29,6 +31,12 @@ def create_app() -> FastAPI:
     application = FastAPI(title="古诗爬虫 API", version="1.0.0", lifespan=lifespan)
     application.include_router(poems_router)
     application.include_router(crawl_router)
+    application.mount("/ui", StaticFiles(directory="frontend", html=True), name="ui")
+
+    @application.get("/", include_in_schema=False)
+    async def index() -> RedirectResponse:
+        return RedirectResponse(url="/ui/")
+
     return application
 
 
