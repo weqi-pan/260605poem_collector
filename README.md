@@ -69,31 +69,32 @@ Authorization: Bearer 123456
 
 ## 公网穿透
 
-先启动本地 FastAPI：
+如果本机 `8000` 端口被 C-Lodop 等服务占用，建议把 FastAPI 启动到 `8010`：
 
 ```powershell
-uvicorn main:app --host 127.0.0.1 --port 8000
+.\.venv\Scripts\python.exe -m uvicorn main:app --host 127.0.0.1 --port 8010
 ```
 
-再另开一个 PowerShell 窗口启动 localtunnel：
+再另开一个 PowerShell 窗口启动 localtunnel，并指定相对固定的子域名：
 
 ```powershell
-npx -y localtunnel --port 8000
+npx -y localtunnel --port 8010 --local-host 127.0.0.1 --subdomain poem-collector-demo
 ```
 
-localtunnel 会输出公网地址，例如：
+成功后会输出：
 
 ```text
-your url is: https://fruity-days-joke.loca.lt
+your url is: https://poem-collector-demo.loca.lt
 ```
 
 当前已验证可访问的公网地址：
 
 ```text
-https://fruity-days-joke.loca.lt/docs
+https://poem-collector-demo.loca.lt/docs
+https://poem-collector-demo.loca.lt/ui/
 ```
 
-这个地址是临时的，localtunnel 进程停止或重新启动后可能会变化。接口仍然需要请求头：
+`--subdomain` 可以让地址尽量保持一致，但 localtunnel 免费服务不保证永久独占；如果子域名被占用或服务端重置，仍可能需要换名。接口仍然需要请求头：
 
 ```text
 Authorization: Bearer 123456
@@ -102,8 +103,8 @@ Authorization: Bearer 123456
 如果需要查看本次穿透日志：
 
 ```powershell
-Get-Content .\data\localtunnel.out.log
-Get-Content .\data\localtunnel.err.log
+Get-Content .\data\localtunnel-8010.out.log
+Get-Content .\data\localtunnel-8010.err.log
 ```
 
 ## API

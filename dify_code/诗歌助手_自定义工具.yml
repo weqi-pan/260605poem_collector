@@ -1,0 +1,1127 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  mode: advanced-chat
+  name: 诗歌助手_自定义工具
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/tongyi:0.1.48@966d88dc40611f067311c1c9839139ebc4b55bff471bc5e736dc3e828bc67b46
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: start
+        targetType: llm
+      id: 1780912535788-llm
+      selected: false
+      source: '1780912535788'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1780917180368-source-1780917738072-target
+      selected: false
+      source: '1780917180368'
+      sourceHandle: source
+      target: '1780917738072'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: iteration
+      id: 1780917738072-true-1780926507807-target
+      source: '1780917738072'
+      sourceHandle: 'true'
+      target: '1780926507807'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1780917738072-false-1780917171723-target
+      source: '1780917738072'
+      sourceHandle: 'false'
+      target: '1780917171723'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: llm-source-1780932400705-target
+      source: llm
+      sourceHandle: source
+      target: '1780932400705'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: answer
+        targetType: code
+      id: 1780932400705-source-1780917180368-target
+      source: '1780932400705'
+      sourceHandle: source
+      target: '1780917180368'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1780926507807'
+        sourceType: iteration-start
+        targetType: code
+      id: 1780926507807start-source-1780933102610-target
+      selected: false
+      source: 1780926507807start
+      sourceHandle: source
+      target: '1780933102610'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1780926507807'
+        sourceType: code
+        targetType: if-else
+      id: 1780933102610-source-1780933361579-target
+      source: '1780933102610'
+      sourceHandle: source
+      target: '1780933361579'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1780926507807'
+        sourceType: if-else
+        targetType: answer
+      id: 1780933361579-false-1780933466972-target
+      source: '1780933361579'
+      sourceHandle: 'false'
+      target: '1780933466972'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1780926507807'
+        sourceType: if-else
+        targetType: tool
+      id: 1780933361579-true-1780933578836-target
+      source: '1780933361579'
+      sourceHandle: 'true'
+      target: '1780933578836'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1780926507807'
+        sourceType: if-else
+        targetType: tool
+      id: 1780933361579-3b9095e7-47c8-4c38-901b-8e58fc928caf-1780933598811-target
+      source: '1780933361579'
+      sourceHandle: 3b9095e7-47c8-4c38-901b-8e58fc928caf
+      target: '1780933598811'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1780926507807'
+        sourceType: if-else
+        targetType: tool
+      id: 1780933361579-7762e651-178c-4254-999a-46f01ea673ef-1780933607364-target
+      source: '1780933361579'
+      sourceHandle: 7762e651-178c-4254-999a-46f01ea673ef
+      target: '1780933607364'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1780926507807'
+        sourceType: tool
+        targetType: variable-aggregator
+      id: 1780933578836-source-1780938149150-target
+      source: '1780933578836'
+      sourceHandle: source
+      target: '1780938149150'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1780926507807'
+        sourceType: tool
+        targetType: variable-aggregator
+      id: 1780933598811-source-1780938149150-target
+      source: '1780933598811'
+      sourceHandle: source
+      target: '1780938149150'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1780926507807'
+        sourceType: tool
+        targetType: variable-aggregator
+      id: 1780933607364-source-1780938149150-target
+      source: '1780933607364'
+      sourceHandle: source
+      target: '1780938149150'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: template-transform
+      id: 1780917180368-source-1780938721748-target
+      selected: false
+      source: '1780917180368'
+      sourceHandle: source
+      target: '1780938721748'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: llm
+      id: 1780938721748-source-1780938849924-target
+      selected: false
+      source: '1780938721748'
+      sourceHandle: source
+      target: '1780938849924'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: iteration
+        targetType: code
+      id: 1780926507807-source-1780940166436-target
+      source: '1780926507807'
+      sourceHandle: source
+      target: '1780940166436'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1780940166436-source-1780938849924-target
+      source: '1780940166436'
+      sourceHandle: source
+      target: '1780938849924'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1780938849924-source-1780939441820-target
+      source: '1780938849924'
+      sourceHandle: source
+      target: '1780939441820'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 用户输入
+        type: start
+        variables: []
+      height: 73
+      id: '1780912535788'
+      position:
+        x: 4
+        y: -17.82344499943804
+      positionAbsolute:
+        x: 4
+        y: -17.82344499943804
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - sys
+          - query
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: qwen3.6-plus
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: 57d6ea61-7b95-4667-97e1-9c311666a366
+          role: system
+          text: "### 角色\n你是一个古诗助手，需要基于用户问题进行查询或者进行古诗数据更新，确保回答内容紧扣主题不发散，对无关古诗的问题进行拒绝，并以JSON格式输出给用户。\n\
+            \n### 参数\n- **用户输入**：{{#context#}}\n\n### 查询使用场景\n- 古诗名：适用于查询指定名称的古诗具体内容。\n\
+            - 诗人：适用于查询诗人平生写过什么诗。\n- 古诗数据更新：适用于更新对应诗人该体裁的诗歌信息。\n\n### 要求：\n1. 优先回答用户问题，确保回答内容紧扣主题不发散。\n\
+            2. 根据用户问题选择合适的回答参数。\n3. 如果用户输入的信息和诗歌无关或者无需查询，则通常不执行查询操作，get_information\
+            \ 设置为 \"0\"。\n4. 如果查询古诗名，则查询对应的古诗，title 设置为 \"对应的古诗名\"。\n5. 如果查询诗人，则查询对应的诗人，author\
+            \ 设置为 \"对应的诗人名字\"。\n6. 如果是更新诗歌数据，则需要更新对应诗人该体裁的诗歌信息，category 设置为 [五言绝句,\
+            \ 七言绝句, 五言律诗, 七言律诗, 五言古诗, 七言古诗, 乐府] 其中一项，author 设置为 \"对应的诗人名字\"\n10. 将输出内容封装到JSON中，格式如下：\n\
+            ​```json\n{\n  \"results\": \"用Markdown格式先回复用户问题，简单概括用户的问题和处理方法\",\n \
+            \ \"get_information\": \"1\",\n  \"getType\": \"[古诗名, 诗人, 更新诗歌数据] 其中一项或几项，多个用;隔开\"\
+            ,\n  \"title\": \"古诗名，多个用;隔开\",\n  \"author\": \"诗人，多个用;隔开\",\n  \"category\"\
+            : \"体裁，多个用;隔开\"\n}\n​```\n\n#### 注意事项：\n- 如果用户问题适合查询，则将 get_information\
+            \ 设置为 \"1\"，并补充 getType、title、author 和 category 字段。\n- 如果用户问题不适合查询，则将\
+            \ get_information 设置为 \"0\"，并省略 getType、chartTitle、title 、author 和 category\
+            \ 字段。\n- 最终输出必须是纯JSON格式，以 ```json 开头，以 ``` 结尾，不包含任何额外解释或文本。\n\n请严格按照上述格式和要求生成响应。"
+        - id: 3df9f059-fceb-4028-99f4-d0f61380d191
+          role: user
+          text: 李白和杜甫有什么诗歌，登高的具体内容是什么
+        - id: b9606c4e-a360-4431-9776-3fd430225473
+          role: assistant
+          text: "​```json\n{\n  \"results\": \"用户查询李白和杜甫的诗歌作品，以及古诗《登高》的具体内容。系统将查询诗人李白和杜甫的作品列表，并查询标题为《登高》的古诗内容。\"\
+            ,\n  \"get_information\": \"1\",\n  \"getType\": \"诗人;古诗名\",\n  \"title\"\
+            : \"登高\",\n  \"author\": \"李白;杜甫\",\n  \"category\": \"\"\n}\n```"
+        selected: false
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: llm
+      position:
+        x: 4
+        y: 88.50087642888073
+      positionAbsolute:
+        x: 4
+        y: 88.50087642888073
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: 无需搜索{{#llm.text#}}
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 103
+      id: '1780917171723'
+      position:
+        x: 13.769855034282696
+        y: 600.0579596922857
+      positionAbsolute:
+        x: 13.769855034282696
+        y: 600.0579596922857
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import re\nimport json\n\n\ndef split_values(text):\n    if not text:\n\
+          \        return []\n    return [\n        item.strip()\n        for item\
+          \ in re.split(r\"[;；]\", text)\n        if item.strip()\n    ]\n\n\ndef\
+          \ parse_json_from_text(text):\n    match = re.search(r\"```json\\s*([\\\
+          s\\S]*?)\\s*```\", text)\n    if match:\n        json_text = match.group(1).strip()\n\
+          \    else:\n        json_text = text.strip()\n\n    return json.loads(json_text)\n\
+          \n\ndef main(value: str) -> dict:\n    data = parse_json_from_text(value)\n\
+          \n    get_types = split_values(data.get(\"getType\", \"\"))\n    titles\
+          \ = split_values(data.get(\"title\", \"\"))\n    authors = split_values(data.get(\"\
+          author\", \"\"))\n    categories = split_values(data.get(\"category\", \"\
+          \"))\n\n    iteration_items = []\n\n    for get_type in get_types:\n   \
+          \     if get_type == \"诗人\":\n            for author in authors:\n     \
+          \           iteration_items.append({\n                    \"getType\": \"\
+          诗人\",\n                    \"title\": \"\",\n                    \"author\"\
+          : author,\n                    \"category\": \"\"\n                })\n\n\
+          \        elif get_type == \"古诗名\":\n            for title in titles:\n \
+          \               iteration_items.append({\n                    \"getType\"\
+          : \"古诗名\",\n                    \"title\": title,\n                    \"\
+          author\": \"\",\n                    \"category\": \"\"\n              \
+          \  })\n\n        elif get_type == \"更新诗歌数据\":\n            update_authors\
+          \ = authors[-1:] if authors else []\n\n            for author in update_authors:\n\
+          \                for category in categories:\n                    iteration_items.append({\n\
+          \                        \"getType\": \"更新诗歌数据\",\n                    \
+          \    \"title\": \"\",\n                        \"author\": author,\n   \
+          \                     \"category\": category\n                    })\n\n\
+          \    return {\n        \"results\": data.get(\"results\", \"\"),\n     \
+          \   \"get_information\": data.get(\"get_information\", \"0\"),\n       \
+          \ \"iteration_items\": iteration_items\n    }"
+        code_language: python3
+        outputs:
+          get_information:
+            children: null
+            type: string
+          iteration_items:
+            children: null
+            type: array[object]
+          results:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - llm
+          - text
+          value_type: string
+          variable: value
+      height: 52
+      id: '1780917180368'
+      position:
+        x: 4
+        y: 333.84949410136375
+      positionAbsolute:
+        x: 4
+        y: 333.84949410136375
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 281055bd-ac84-44d6-8cc2-4e325bef9f1c
+            value: '1'
+            varType: string
+            variable_selector:
+            - '1780917180368'
+            - get_information
+          id: 'true'
+          logical_operator: and
+        selected: false
+        title: 条件分支 2
+        type: if-else
+      height: 148
+      id: '1780917738072'
+      position:
+        x: 13.769855034282696
+        y: 421.427199174821
+      positionAbsolute:
+        x: 13.769855034282696
+        y: 421.427199174821
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        error_handle_mode: continue-on-error
+        flatten_output: true
+        height: 613
+        is_parallel: false
+        iterator_input_type: array[object]
+        iterator_selector:
+        - '1780917180368'
+        - iteration_items
+        output_selector:
+        - '1780938149150'
+        - output
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1780926507807start
+        title: 迭代
+        type: iteration
+        width: 953
+      height: 613
+      id: '1780926507807'
+      position:
+        x: 482.2949270586614
+        y: -55.905289802025266
+      positionAbsolute:
+        x: 482.2949270586614
+        y: -55.905289802025266
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 953
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1780926507807start
+      parentId: '1780926507807'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 506.2949270586614
+        y: 12.094710197974734
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        code: "def main(args: dict) -> dict:\n    # 提取输入字典的字段\n    getType = args.get(\"\
+          getType\", \"\")\n    title = args.get(\"title\", \"\")\n    author = args.get(\"\
+          author\", \"\")\n    category = args.get(\"category\", \"\")\n    \n   \
+          \ # 返回字典\n    return {\n        \"getType\": getType,\n        \"title\"\
+          : title,\n        \"author\": author,\n        \"category\": category\n\
+          \    }\n"
+        code_language: python3
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1780926507807'
+        outputs:
+          author:
+            children: null
+            type: string
+          category:
+            children: null
+            type: string
+          getType:
+            children: null
+            type: string
+          title:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行 2
+        type: code
+        variables:
+        - value_selector:
+          - '1780926507807'
+          - item
+          value_type: object
+          variable: args
+      height: 52
+      id: '1780933102610'
+      parentId: '1780926507807'
+      position:
+        x: 107.94210500618226
+        y: 65
+      positionAbsolute:
+        x: 590.2370320648437
+        y: 9.094710197974734
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        answer: '{{#llm.text#}}
+
+          ——————————————'
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 119
+      id: '1780932400705'
+      position:
+        x: 4
+        y: 203.35483682932147
+      positionAbsolute:
+        x: 4
+        y: 203.35483682932147
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 33ab0feb-605f-4ef9-9f77-24d27f05560b
+            value: 诗人
+            varType: string
+            variable_selector:
+            - '1780933102610'
+            - getType
+          id: 'true'
+          logical_operator: and
+        - case_id: 3b9095e7-47c8-4c38-901b-8e58fc928caf
+          conditions:
+          - comparison_operator: is
+            id: 8a714c7b-a343-4e9e-887c-60b12bef7e68
+            value: 古诗名
+            varType: string
+            variable_selector:
+            - '1780933102610'
+            - getType
+          id: 3b9095e7-47c8-4c38-901b-8e58fc928caf
+          logical_operator: and
+        - case_id: 7762e651-178c-4254-999a-46f01ea673ef
+          conditions:
+          - comparison_operator: is
+            id: 708282f2-0cf8-4a7d-a5b8-9e5ced8790e9
+            value: 更新诗歌数据
+            varType: string
+            variable_selector:
+            - '1780933102610'
+            - getType
+          id: 7762e651-178c-4254-999a-46f01ea673ef
+          logical_operator: and
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1780926507807'
+        selected: false
+        title: 条件分支 2
+        type: if-else
+      height: 268
+      id: '1780933361579'
+      parentId: '1780926507807'
+      position:
+        x: 105.42679010003815
+        y: 147.17304693872836
+      positionAbsolute:
+        x: 587.7217171586996
+        y: 91.2677571367031
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        is_team_authorization: true
+        iteration_id: '1780926507807'
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Poet name.
+            ja_JP: Poet name.
+            pt_BR: Poet name.
+            zh_Hans: Poet name.
+          label:
+            en_US: author
+            ja_JP: author
+            pt_BR: author
+            zh_Hans: author
+          llm_description: Poet name.
+          max: null
+          min: null
+          name: author
+          options: []
+          placeholder:
+            en_US: Poet name.
+            ja_JP: Poet name.
+            pt_BR: Poet name.
+            zh_Hans: Poet name.
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          author: ''
+        plugin_id: null
+        plugin_unique_identifier: null
+        provider_icon:
+          background: '#FEF7C3'
+          content: 🕵️
+        provider_id: 995e5b86-9b54-4d7d-8393-8bdef6c619e7
+        provider_name: 古诗查询
+        provider_type: api
+        selected: false
+        title: getPoetTitles
+        tool_configurations: {}
+        tool_description: Return all poem titles and categories for a specified author.
+        tool_label: getPoetTitles
+        tool_name: getPoetTitles
+        tool_node_version: '2'
+        tool_parameters:
+          author:
+            type: mixed
+            value: '{{#1780933102610.author#}}'
+        type: tool
+      height: 52
+      id: '1780933578836'
+      parentId: '1780926507807'
+      position:
+        x: 374.43364260698047
+        y: 151.66383356776396
+      positionAbsolute:
+        x: 856.7285696656419
+        y: 95.7585437657387
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        is_team_authorization: true
+        iteration_id: '1780926507807'
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Poem title to search for.
+            ja_JP: Poem title to search for.
+            pt_BR: Poem title to search for.
+            zh_Hans: Poem title to search for.
+          label:
+            en_US: title
+            ja_JP: title
+            pt_BR: title
+            zh_Hans: title
+          llm_description: Poem title to search for.
+          max: null
+          min: null
+          name: title
+          options: []
+          placeholder:
+            en_US: Poem title to search for.
+            ja_JP: Poem title to search for.
+            pt_BR: Poem title to search for.
+            zh_Hans: Poem title to search for.
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          title: ''
+        plugin_id: null
+        plugin_unique_identifier: null
+        provider_icon:
+          background: '#FEF7C3'
+          content: 🕵️
+        provider_id: 995e5b86-9b54-4d7d-8393-8bdef6c619e7
+        provider_name: 古诗查询
+        provider_type: api
+        selected: false
+        title: getPoemsByTitle
+        tool_configurations: {}
+        tool_description: Search poems by title and return matching poem details.
+        tool_label: getPoemsByTitle
+        tool_name: getPoemsByTitle
+        tool_node_version: '2'
+        tool_parameters:
+          title:
+            type: mixed
+            value: '{{#1780933102610.title#}}'
+        type: tool
+      height: 52
+      id: '1780933598811'
+      parentId: '1780926507807'
+      position:
+        x: 372.93181028716697
+        y: 229.71636518240177
+      positionAbsolute:
+        x: 855.2267373458284
+        y: 173.8110753803765
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        is_team_authorization: true
+        iteration_id: '1780926507807'
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Poem category.
+            ja_JP: Poem category.
+            pt_BR: Poem category.
+            zh_Hans: Poem category.
+          label:
+            en_US: category
+            ja_JP: category
+            pt_BR: category
+            zh_Hans: category
+          llm_description: Poem category.
+          max: null
+          min: null
+          name: category
+          options: []
+          placeholder:
+            en_US: Poem category.
+            ja_JP: Poem category.
+            pt_BR: Poem category.
+            zh_Hans: Poem category.
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Poet name.
+            ja_JP: Poet name.
+            pt_BR: Poet name.
+            zh_Hans: Poet name.
+          label:
+            en_US: author
+            ja_JP: author
+            pt_BR: author
+            zh_Hans: author
+          llm_description: Poet name.
+          max: null
+          min: null
+          name: author
+          options: []
+          placeholder:
+            en_US: Poet name.
+            ja_JP: Poet name.
+            pt_BR: Poet name.
+            zh_Hans: Poet name.
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          author: ''
+          category: ''
+        plugin_id: null
+        plugin_unique_identifier: null
+        provider_icon:
+          background: '#FEF7C3'
+          content: 🕵️
+        provider_id: 995e5b86-9b54-4d7d-8393-8bdef6c619e7
+        provider_name: 古诗查询
+        provider_type: api
+        selected: false
+        title: crawlPoems
+        tool_configurations: {}
+        tool_description: Crawl poems by category and author.
+        tool_label: crawlPoems
+        tool_name: crawlPoems
+        tool_node_version: '2'
+        tool_parameters:
+          author:
+            type: mixed
+            value: '{{#1780933102610.author#}}'
+          category:
+            type: mixed
+            value: '{{#1780933102610.category#}}'
+        type: tool
+      height: 52
+      id: '1780933607364'
+      parentId: '1780926507807'
+      position:
+        x: 377.4255163608984
+        y: 313.30413822021745
+      positionAbsolute:
+        x: 859.7204434195598
+        y: 257.3988484181922
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        answer: '{{#1780926507807.item#}}
+
+          错误，请重试'
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1780926507807'
+        selected: false
+        title: 直接回复 6
+        type: answer
+        variables: []
+      height: 103
+      id: '1780933466972'
+      parentId: '1780926507807'
+      position:
+        x: 381.7933826874919
+        y: 396.3294728493971
+      positionAbsolute:
+        x: 864.0883097461533
+        y: 340.42418304737186
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1780926507807'
+        output_type: string
+        selected: false
+        title: 变量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1780933578836'
+          - text
+        - - '1780933598811'
+          - text
+        - - '1780933607364'
+          - text
+      height: 160
+      id: '1780938149150'
+      parentId: '1780926507807'
+      position:
+        x: 676.4336426069804
+        y: 150.87013303206382
+      positionAbsolute:
+        x: 1158.7285696656418
+        y: 94.96484323003855
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 1002
+    - data:
+        selected: false
+        template: '{{ arg1 }}'
+        title: 模板转换
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1780917180368'
+          - iteration_items
+          value_type: array[object]
+          variable: arg1
+      height: 52
+      id: '1780938721748'
+      position:
+        x: 489.7296360908715
+        y: 617.5193714776884
+      positionAbsolute:
+        x: 489.7296360908715
+        y: 617.5193714776884
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1780940166436'
+          - result
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: qwen3.6-plus
+          provider: langgenius/tongyi/tongyi
+        prompt_template:
+        - id: 498aac88-4cd7-4ad6-9cda-a0ace251af92
+          role: system
+          text: '### 角色
+
+            你是一个古诗整理助手，需要基于检索步骤和检索结果进行回答，确保回答内容紧扣主题不发散，并以markdown格式输出给用户。
+
+
+            ### 参数
+
+            - **检索说明**：{{#1780917180368.results#}}
+
+            - **检索组**：{{#1780938721748.output#}}
+
+            - **检索结果**：{{#context#}}
+
+
+            ### 检索流程说明
+
+            - 检索说明是本次要检索的内容简介
+
+            - 检索组是一个或者多个数组，每个数组都是一个单独的检索项，其中每个数组当中有检索类型 "getType" 和检索项 ''title''、
+            ''author'', ''category'' ，根据检索类型，检索对应的项
+
+            - 检索结果是一个或者多个数组，按顺序对应每一个检索项，是执行检索后的结果
+
+            - 当检索类型为更新诗歌数据时，要告诉用户更新结果，其中matched是匹配到的，inserted是新增的，skipped已有跳过的
+
+
+            ### 要求：
+
+            1、请按照检索的结果，整理并给出用户回答
+
+            2、整理好回答格式'
+        selected: false
+        title: LLM 2
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1780938849924'
+      position:
+        x: 1474.2758189326041
+        y: 88.50087642888073
+      positionAbsolute:
+        x: 1474.2758189326041
+        y: 88.50087642888073
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1780938849924.text#}}'
+        selected: false
+        title: 直接回复 4
+        type: answer
+        variables: []
+      height: 103
+      id: '1780939441820'
+      position:
+        x: 1474.2758189326041
+        y: 249.22372106759934
+      positionAbsolute:
+        x: 1474.2758189326041
+        y: 249.22372106759934
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "def main(args) -> dict:\n    return {\n        \"result\": \"\".join(str(item)\
+          \ for item in args)\n    }\n"
+        code_language: python3
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行 3
+        type: code
+        variables:
+        - value_selector:
+          - '1780926507807'
+          - output
+          value_type: array[string]
+          variable: args
+      height: 52
+      id: '1780940166436'
+      position:
+        x: 1474.2758189326041
+        y: -55.905289802025266
+      positionAbsolute:
+        x: 1474.2758189326041
+        y: -55.905289802025266
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -101.3967948553775
+      y: 194.3859074290367
+      zoom: 0.7236346098618746
+  rag_pipeline_variables: []
